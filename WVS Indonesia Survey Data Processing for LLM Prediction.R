@@ -66,34 +66,3 @@ final_df <- long_df %>% select(prompt, answer)
 #write.csv(final_df, "~/Downloads/wvs_prompt_response_indonesia.csv", row.names = FALSE)
 nrow(final_df)
 
-# Country trying to predict: Indonesia/ wvs$COUNTRY_ALP: IDN, wvs$S003: 360, wvs$COW_NUM: 850
-#1-1. A004.- Important in life: Politics
-summary(wvs$A004)
-#1-2. A006.- Important in life: Religion 
-summary(wvs$A006)
-#2-1. E290.- Justifiable: Political violence
-summary(wvs$E290)
-#2-2. F114E.- Justifiable: Terrorism as a political, ideological or religious mean
-summary(wvs$F114E)
-#3. E150.- How often follows politics in the news
-summary(wvs$E150)
-#4. E114.- Political system: Having a strong leader
-summary(wvs$E114)
-#5-1. E069_01.- Confidence: Churches (Mosque, temple, church)
-summary(wvs$E069_01)
-#5-2. E069_11.- Confidence: The Government
-summary(wvs$E069_11)
-# Demographics-Country
-summary(wvs$S003)
-# Demographics-Year survey
-summary(wvs$S020)
-# Demographics-Unified respondent number
-summary(wvs$S007)
-# Demographics-Gender
-summary(wvs$X001)
-# Demographics-Age
-summary(wvs$X003)
-# Demographics-Region
-summary(wvs$F025_WVS)
-# Demographics-Income 
-summary(wvs$X047R_WVS)
