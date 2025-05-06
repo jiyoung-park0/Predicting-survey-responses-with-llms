@@ -56,15 +56,15 @@ model = get_peft_model(model, lora_config)
 # STEP 7: Training configuration
 training_args = TrainingArguments(
    output_dir="./qlora-finetuned",
-   per_device_train_batch_size=4,      #2. Increase per_device_train_batch_size for better speed  2->4
-   gradient_accumulation_steps=1,      #1. Reduce gradient_accumulation_steps for better speed  2->1
-   num_train_epochs=2,                 #3. Reduce number of epochs for speed. 2-3 is appropriate for small datasets  3->2
+   per_device_train_batch_size=4,      
+   gradient_accumulation_steps=1,      
+   num_train_epochs=2,                 
    learning_rate=2e-4,
    logging_steps=10,
-   save_strategy="epoch",              # 🔁 Save checkpoint every epoch
-   save_total_limit=2,                 # 💾 Keep only the 2 most recent checkpoints to save space
-   load_best_model_at_end=True,        # ✅ Automatically load the best performing model at the end
-   evaluation_strategy="no",           # (No evaluation strategy as we don't have evaluation data now)
+   save_strategy="epoch",              # Save checkpoint every epoch
+   save_total_limit=2,                
+   load_best_model_at_end=True,        
+   evaluation_strategy="no",           
    fp16=True,
    report_to="none"
 )
@@ -183,10 +183,6 @@ trainer = SFTTrainer(
 trainer.train()
 
 # STEP 9: Save model
-model.save_pretrained("./qlora-finetuned")
-tokenizer.save_pretrained("./qlora-finetuned")
+model.save_pretrained("./qlora-finetuned_2")
+tokenizer.save_pretrained("./qlora-finetuned_2")
 
-# STEP 10: Compress and download model from Colab
-import shutil
-shutil.make_archive("qlora-finetuned_2", 'zip', "./qlora-finetuned")
-files.download("qlora-finetuned_2.zip")
